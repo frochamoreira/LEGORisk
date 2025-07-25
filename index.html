@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Identifique seus Riscos</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<style>
+body {
+  background-color: #2E3440;
+  color: #D8DEE9;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+header {
+  background-color: #3B4252;
+  color: #ECEFF4;
+  padding: 1rem;
+  text-align: center;
+  border-bottom: 1px solid #4C566A;
+}
+
+h1 {
+  font-size: 1.4rem;
+  margin: 0;
+  color: #E5E9F0;
+}
+
+.accordion-button {
+  background-color: #434C5E;
+  color: #ECEFF4;
+  font-size: 0.95rem;
+  border: none;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: #4C566A;
+  color: #ECEFF4;
+}
+
+.accordion-body {
+  background-color: #3B4252;
+  color: #E5E9F0;
+  border-top: 1px solid #4C566A;
+}
+
+button.print-button {
+  background-color: #5E81AC;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+button.print-button:hover {
+  background-color: #81A1C1;
+}
+
+input[type="checkbox"] {
+  accent-color: #88C0D0;
+}
+
+li {
+  margin-left: 1rem;
+}
+
+nav.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 240px;
+  height: 100%;
+  background-color: #3B4252;
+  color: #ECEFF4;
+  padding: 1rem;
+  overflow-y: auto;
+}
+nav.sidebar a {
+  display: block;
+  color: #ECEFF4;
+  text-decoration: none;
+  margin: 0.7rem 0;
+  font-weight: bold;
+}
+main.content {
+  margin-left: 260px;
+  padding: 2rem;
+}
+
+@media (max-width: 768px) {
+  nav.sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+  }
+  .content {
+    margin-left: 0 !important;
+  }
+}
+.content {
+  margin-left: 260px;
+  padding: 2rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #D8DEE9 !important;
+}
+.print-button {
+  color: #D8DEE9 !important;
+  background-color: #5E81AC !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #D8DEE9 !important;
+  font-weight: 500 !important;
+}
+
+.print-button,
+button.print-button,
+.btn,
+.btn-primary {
+  color: #D8DEE9 !important;
+  background-color: #5E81AC !important;
+  border: 1px solid #5E81AC !important;
+}
+</style><style>
+body {
+  background-color: #2E3440;
+  color: #D8DEE9;
+}
+h1, h2, h3, h4, h5, h6, label, .section-title {
+  color: #D8DEE9;
+}
+button, .btn, .print-button {
+  background-color: #4C566A;
+  border: 1px solid #4C566A;
+  color: #D8DEE9;
+}
+button:hover, .btn:hover {
+  background-color: #5E81AC;
+  border-color: #5E81AC;
+  color: #ECEFF4;
+}
+</style></head>
+<body>
+<nav class="sidebar">
+<h2 style="color:#D8DEE9; font-size: 1.1rem;">LEGORisk</h2>
+<a href="#oque">O que é LEGORisk</a><a href="#identifique">Identifique os riscos do seu sistema legado</a></nav>
+<div class="content" id="oque">
+<h2 style="color:#D8DEE9;">O que é LEGORisk</h2>
+<p>O LEGORisk (acrônimo para Legacy Governance Oriented Risk) é um framework proposto para apoiar a gestão de riscos em sistemas legados, com foco em requisitos não funcionais (NFRs). Ele foi desenvolvido a partir de uma revisão sistemática da literatura (SLR) e de uma análise de conteúdo de estudos que abordam riscos em contextos de manutenção, migração e modernização de sistemas legados.</p>
+<h3>Objetivo</h3>
+<p>O LEGORisk tem como propósito estruturar e classificar diretrizes de risco associadas ao uso e à transformação de sistemas legados, fornecendo subsídios à tomada de decisão por parte de gestores e profissionais de TI. Ele busca responder perguntas como:</p>
+<ul>
+<li>Quais são os riscos financeiros de manter um sistema legado?</li>
+<li>Quais são os riscos técnicos de migrar um sistema legado para a nuvem?</li>
+<li>Qual é o perfil de riscos associado à manutenção do sistema atual?</li>
+</ul>
+<h3>Estrutura</h3>
+<p>O LEGORisk organiza os riscos em uma estrutura hierárquica composta por:</p>
+<ul>
+<li>5 categorias principais de risco</li>
+<li>12 subcategorias</li>
+<li>109 unidades de risco (diretrizes específicas)</li>
+</ul>
+<p>Essas diretrizes foram extraídas e consolidadas com base nas evidências presentes em 17 estudos selecionados da literatura.</p>
+<h3>Diferenciais</h3>
+<ul>
+<li><strong>Cobertura ampla:</strong> considera múltiplos tipos de riscos (técnicos, organizacionais, financeiros, humanos, etc.).</li>
+<li><strong>Foco em NFRs:</strong> aspectos como usabilidade, escalabilidade, segurança, entre outros.</li>
+<li><strong>Abordagem prática:</strong> as diretrizes são formuladas como perguntas orientadoras, facilitando o uso mesmo por gestores sem formação técnica.</li>
+<li><strong>Base empírica:</strong> resultado de SLR + análise de conteúdo.</li>
+<li><strong>Aplicável em diferentes contextos:</strong> manutenção, reengenharia, migração para nuvem, entre outros.</li>
+</ul>
+</div><div class="container my-4 content" id="identifique">
+<h1>Identifique os riscos do seu sistema legado</h1>
+
+<div class="accordion" id="riskAccordion">
+<div class="accordion-item">
+<h2 class="accordion-header" id="heading-cat1">
+<button aria-controls="collapse-cat1" aria-expanded="false" class="accordion-button collapsed" data-bs-target="#collapse-cat1" data-bs-toggle="collapse" type="button">
+<input class="form-check-input me-2 toggle-only" id="cat1" onchange="toggleChildren(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat1"><strong>Risco Operacional  e Manutenção de um Sistema Legado </strong></label>
+</button>
+</h2>
+<div aria-labelledby="heading-cat1" class="accordion-collapse collapse" data-bs-parent="#riskAccordion" id="collapse-cat1">
+<div class="accordion-body">
+<div class="accordion mb-2" id="subAccordion-cat1-sub1">
+<div class="accordion-item">
+<h2 class="accordion-header" id="heading-cat1-sub1">
+<button aria-controls="collapse-cat1-sub1" aria-expanded="false" class="accordion-button collapsed" data-bs-target="#collapse-cat1-sub1" data-bs-toggle="collapse" type="button">
+<input class="form-check-input me-2 toggle-only" id="cat1-sub1" onchange="toggleChildren(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat1-sub1">Risco de Segurança em Sistemas Legados</label>
+</button>
+</h2>
+<div aria-labelledby="heading-cat1-sub1" class="accordion-collapse collapse" data-bs-parent="#subAccordion-cat1-sub1" id="collapse-cat1-sub1">
+<div class="accordion-body">
+<ul class="list-unstyled ms-4">
+<li><input class="form-check-input" id="cat1-sub1-item1" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat1-sub1-item1">Acesso físico insuficiente</label></li>
+<li><input class="form-check-input" id="cat1-sub1-item2" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat1-sub1-item2">Análises de Perigo</label></li>
+<li><input class="form-check-input" id="cat1-sub1-item3" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat1-sub1-item3">Análises de Segurança de Software</label></li>
+<li><input class="form-check-input" id="cat1-sub1-item4" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat1-sub1-item4">Aumento da superfície de ataque</label></li>
+<li><input class="form-check-input" id="cat1-sub1-item5" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat1-sub1-item5">Aumento de custos em Segurança</label></li>
+<li><input class="form-check-input" id="cat1-sub1-item6" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat1-sub1-item6">Ausência de Definição Clara do Processo de Segurança</label></li>
+<li><input class="form-check-input" id="cat1-sub1-item7" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat1-sub1-item7">Autenticação e Autorização</label></li>
+<li><input class="form-check-input" id="cat1-sub1-item8" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat1-sub1-item8">Confidencialidade e Proteção de Dados</label></li>
+<li><input class="form-check-input" id="cat1-sub1-item9" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat1-sub1-item9">Configurações de segurança padrão/inadequadas</label></li>
+<li><input class="form-check-input" id="cat1-sub1-item10" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat1-sub1-item10">Documentação (SW ou Segurança)</label></li>
+<li><input class="form-check-input" id="cat1-sub1-item11" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat1-sub1-item11">Falhas Críticas Ocultas</label></li>
+<li><input class="form-check-input" id="cat1-sub1-item12" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat1-sub1-item12">Integridade e Disponibilidade</label></li>
+<li><input class="form-check-input" id="cat1-sub1-item13" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat1-sub1-item13">Interfaces Internas e Externas</label></li>
+<li><input class="form-check-input" id="cat1-sub1-item14" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat1-sub1-item14">Manutenção e Monitoramento do Sistema</label></li>
+<li><input class="form-check-input" id="cat1-sub1-item15" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat1-sub1-item15">Mecanismos de Segurança Aplicados</label></li>
+<li><input class="form-check-input" id="cat1-sub1-item16" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat1-sub1-item16">Problemas de Planejamento e Gestão de Segurança</label></li>
+<li><input class="form-check-input" id="cat1-sub1-item17" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat1-sub1-item17">Reinicialização Crítica para a Segurança</label></li>
+<li><input class="form-check-input" id="cat1-sub1-item18" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat1-sub1-item18">Requisitos de Segurança</label></li>
+<li><input class="form-check-input" id="cat1-sub1-item19" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat1-sub1-item19">Riscos de reescrita de arquivos binários</label></li>
+<li><input class="form-check-input" id="cat1-sub1-item20" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat1-sub1-item20">Vulnerabilidades de segurança cibernética</label></li>
+</ul></div></div></div></div>
+<div class="accordion mb-2" id="subAccordion-cat1-sub2">
+<div class="accordion-item">
+<h2 class="accordion-header" id="heading-cat1-sub2">
+<button aria-controls="collapse-cat1-sub2" aria-expanded="false" class="accordion-button collapsed" data-bs-target="#collapse-cat1-sub2" data-bs-toggle="collapse" type="button">
+<input class="form-check-input me-2 toggle-only" id="cat1-sub2" onchange="toggleChildren(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat1-sub2">Riscos Humanos Operacionais e de Manutenção em Sistemas Legados.</label>
+</button>
+</h2>
+<div aria-labelledby="heading-cat1-sub2" class="accordion-collapse collapse" data-bs-parent="#subAccordion-cat1-sub2" id="collapse-cat1-sub2">
+<div class="accordion-body">
+<ul class="list-unstyled ms-4">
+<li><input class="form-check-input" id="cat1-sub2-item1" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat1-sub2-item1">Compreensão do sistema legado - Compreensão limitada do sistema legado</label></li>
+<li><input class="form-check-input" id="cat1-sub2-item2" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat1-sub2-item2">Compreensão do sistema legado - Documentação pobre ou inexistente</label></li>
+<li><input class="form-check-input" id="cat1-sub2-item3" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat1-sub2-item3">Degradação da reputação social</label></li>
+<li><input class="form-check-input" id="cat1-sub2-item4" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat1-sub2-item4">Perda de conhecimento das regras de negócio ao longo do tempo</label></li>
+<li><input class="form-check-input" id="cat1-sub2-item5" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat1-sub2-item5">Erros humanos de operação</label></li>
+<li><input class="form-check-input" id="cat1-sub2-item6" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat1-sub2-item6">Perda de oportunidade</label></li>
+</ul></div></div></div></div>
+<div class="accordion mb-2" id="subAccordion-cat1-sub3">
+<div class="accordion-item">
+<h2 class="accordion-header" id="heading-cat1-sub3">
+<button aria-controls="collapse-cat1-sub3" aria-expanded="false" class="accordion-button collapsed" data-bs-target="#collapse-cat1-sub3" data-bs-toggle="collapse" type="button">
+<input class="form-check-input me-2 toggle-only" id="cat1-sub3" onchange="toggleChildren(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat1-sub3">Riscos de Manutenção do Sistema Legado</label>
+</button>
+</h2>
+<div aria-labelledby="heading-cat1-sub3" class="accordion-collapse collapse" data-bs-parent="#subAccordion-cat1-sub3" id="collapse-cat1-sub3">
+<div class="accordion-body">
+<ul class="list-unstyled ms-4">
+<li><input class="form-check-input" id="cat1-sub3-item1" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat1-sub3-item1">Altos custos de manutenção do legado</label></li>
+<li><input class="form-check-input" id="cat1-sub3-item2" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat1-sub3-item2">Complexidade ciclomática</label></li>
+<li><input class="form-check-input" id="cat1-sub3-item3" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat1-sub3-item3">Dependência de manutenção manual</label></li>
+<li><input class="form-check-input" id="cat1-sub3-item4" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat1-sub3-item4">Escalabilidade da aplicação</label></li>
+<li><input class="form-check-input" id="cat1-sub3-item5" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat1-sub3-item5">Falhas de produto (ex.: bugs de software e defeitos de hardware)</label></li>
+<li><input class="form-check-input" id="cat1-sub3-item6" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat1-sub3-item6">Manutenção de software</label></li>
+<li><input class="form-check-input" id="cat1-sub3-item7" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat1-sub3-item7">Mudanças ambientais (ex.: picos de tráfego de rede sobrecarga de dados)</label></li>
+<li><input class="form-check-input" id="cat1-sub3-item8" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat1-sub3-item8">Perda de eficiência operacional ao manter o legado</label></li>
+<li><input class="form-check-input" id="cat1-sub3-item9" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat1-sub3-item9">Profundidade da Herança Acoplamento de Classes e Linhas de Código</label></li>
+<li><input class="form-check-input" id="cat1-sub3-item10" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat1-sub3-item10">Rigidez operacional</label></li>
+<li><input class="form-check-input" id="cat1-sub3-item11" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat1-sub3-item11">Sistemas em plataformas não suportadas</label></li>
+</ul></div></div></div></div>
+</div></div>
+<div class="accordion-item">
+<h2 class="accordion-header" id="heading-cat2">
+<button aria-controls="collapse-cat2" aria-expanded="false" class="accordion-button collapsed" data-bs-target="#collapse-cat2" data-bs-toggle="collapse" type="button">
+<input class="form-check-input me-2 toggle-only" id="cat2" onchange="toggleChildren(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat2"><strong>Risco de Migração e Implantação de um Sistema Legado na Nuvem   </strong></label>
+</button>
+</h2>
+<div aria-labelledby="heading-cat2" class="accordion-collapse collapse" data-bs-parent="#riskAccordion" id="collapse-cat2">
+<div class="accordion-body">
+<div class="accordion mb-2" id="subAccordion-cat2-sub1">
+<div class="accordion-item">
+<h2 class="accordion-header" id="heading-cat2-sub1">
+<button aria-controls="collapse-cat2-sub1" aria-expanded="false" class="accordion-button collapsed" data-bs-target="#collapse-cat2-sub1" data-bs-toggle="collapse" type="button">
+<input class="form-check-input me-2 toggle-only" id="cat2-sub1" onchange="toggleChildren(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat2-sub1">Risco de Migração para Nuvem</label>
+</button>
+</h2>
+<div aria-labelledby="heading-cat2-sub1" class="accordion-collapse collapse" data-bs-parent="#subAccordion-cat2-sub1" id="collapse-cat2-sub1">
+<div class="accordion-body">
+<ul class="list-unstyled ms-4">
+<li><input class="form-check-input" id="cat2-sub1-item1" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat2-sub1-item1">Ações de Adaptação de Dados e Aplicações</label></li>
+<li><input class="form-check-input" id="cat2-sub1-item2" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat2-sub1-item2">Baixa escalabilidade</label></li>
+<li><input class="form-check-input" id="cat2-sub1-item3" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat2-sub1-item3">Confidencialidade dos Dados</label></li>
+<li><input class="form-check-input" id="cat2-sub1-item4" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat2-sub1-item4">Custos elevados de migração para nuvem</label></li>
+<li><input class="form-check-input" id="cat2-sub1-item5" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat2-sub1-item5">Dependências técnicas não mapeadas no ambiente em nuvem</label></li>
+<li><input class="form-check-input" id="cat2-sub1-item6" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat2-sub1-item6">Escolha inadequada do cenário de migração</label></li>
+<li><input class="form-check-input" id="cat2-sub1-item7" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat2-sub1-item7">Gestão de Identidade e Acesso</label></li>
+<li><input class="form-check-input" id="cat2-sub1-item8" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat2-sub1-item8">Habilidades e Papéis dos Funcionários no contexto de nuvem</label></li>
+<li><input class="form-check-input" id="cat2-sub1-item9" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat2-sub1-item9">Incidentes de segurança em Nuvem</label></li>
+<li><input class="form-check-input" id="cat2-sub1-item10" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat2-sub1-item10">Incompatibilidades entre legado e nuvem</label></li>
+<li><input class="form-check-input" id="cat2-sub1-item11" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat2-sub1-item11">Incompatibilidades técnicas com a nuvem</label></li>
+<li><input class="form-check-input" id="cat2-sub1-item12" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat2-sub1-item12">Interrupção dos Serviços</label></li>
+<li><input class="form-check-input" id="cat2-sub1-item13" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat2-sub1-item13">Isolamento e Exclusão de Dados</label></li>
+<li><input class="form-check-input" id="cat2-sub1-item14" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat2-sub1-item14">Perda de Governança</label></li>
+<li><input class="form-check-input" id="cat2-sub1-item15" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat2-sub1-item15">Recuperação de Desastres e Continuidade de Negócios</label></li>
+<li><input class="form-check-input" id="cat2-sub1-item16" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat2-sub1-item16">Suporte e Conformidade do Provedor de Nuvem (CSP)</label></li>
+<li><input class="form-check-input" id="cat2-sub1-item17" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat2-sub1-item17">Transparência e Prestação de Contas</label></li>
+</ul></div></div></div></div>
+<div class="accordion mb-2" id="subAccordion-cat2-sub2">
+<div class="accordion-item">
+<h2 class="accordion-header" id="heading-cat2-sub2">
+<button aria-controls="collapse-cat2-sub2" aria-expanded="false" class="accordion-button collapsed" data-bs-target="#collapse-cat2-sub2" data-bs-toggle="collapse" type="button">
+<input class="form-check-input me-2 toggle-only" id="cat2-sub2" onchange="toggleChildren(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat2-sub2">Risco de Migração para Sistema Alvo</label>
+</button>
+</h2>
+<div aria-labelledby="heading-cat2-sub2" class="accordion-collapse collapse" data-bs-parent="#subAccordion-cat2-sub2" id="collapse-cat2-sub2">
+<div class="accordion-body">
+<ul class="list-unstyled ms-4">
+<li><input class="form-check-input" id="cat2-sub2-item1" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat2-sub2-item1">Complexidade</label></li>
+<li><input class="form-check-input" id="cat2-sub2-item2" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat2-sub2-item2">Compreensão do sistema legado - Compreensão limitada do sistema legado</label></li>
+<li><input class="form-check-input" id="cat2-sub2-item3" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat2-sub2-item3">Compreensão do sistema legado - Documentação pobre ou inexistente</label></li>
+<li><input class="form-check-input" id="cat2-sub2-item4" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat2-sub2-item4">Custo de Migração</label></li>
+<li><input class="form-check-input" id="cat2-sub2-item5" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat2-sub2-item5">Desenvolvimento do sistema alvo - Arquitetura inadequada</label></li>
+<li><input class="form-check-input" id="cat2-sub2-item6" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat2-sub2-item6">Desenvolvimento do sistema alvo - Linguagem</label></li>
+<li><input class="form-check-input" id="cat2-sub2-item7" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat2-sub2-item7">Desenvolvimento do sistema alvo - Método de migração inadequado</label></li>
+<li><input class="form-check-input" id="cat2-sub2-item8" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat2-sub2-item8">Identificação deficiente de componentes reutilizáveis e redundâncias antes da definição dos requisitos do sistema alvo</label></li>
+<li><input class="form-check-input" id="cat2-sub2-item9" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat2-sub2-item9">Mudança na interface gráfica (GUI)</label></li>
+<li><input class="form-check-input" id="cat2-sub2-item10" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat2-sub2-item10">Possibilidade de falha na migração</label></li>
+<li><input class="form-check-input" id="cat2-sub2-item11" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat2-sub2-item11">Tamanho</label></li>
+<li><input class="form-check-input" id="cat2-sub2-item12" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat2-sub2-item12">Tecnologia e requisitos em constante mudança</label></li>
+<li><input class="form-check-input" id="cat2-sub2-item13" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat2-sub2-item13">Tempo</label></li>
+<li><input class="form-check-input" id="cat2-sub2-item14" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat2-sub2-item14">Testes - Complexidade</label></li>
+</ul></div></div></div></div>
+</div></div>
+<div class="accordion-item">
+<h2 class="accordion-header" id="heading-cat3">
+<button aria-controls="collapse-cat3" aria-expanded="false" class="accordion-button collapsed" data-bs-target="#collapse-cat3" data-bs-toggle="collapse" type="button">
+<input class="form-check-input me-2 toggle-only" id="cat3" onchange="toggleChildren(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat3"><strong>Risco de Processo de Desenvolvimento e  Implantação
+ </strong></label>
+</button>
+</h2>
+<div aria-labelledby="heading-cat3" class="accordion-collapse collapse" data-bs-parent="#riskAccordion" id="collapse-cat3">
+<div class="accordion-body">
+<div class="accordion mb-2" id="subAccordion-cat3-sub1">
+<div class="accordion-item">
+<h2 class="accordion-header" id="heading-cat3-sub1">
+<button aria-controls="collapse-cat3-sub1" aria-expanded="false" class="accordion-button collapsed" data-bs-target="#collapse-cat3-sub1" data-bs-toggle="collapse" type="button">
+<input class="form-check-input me-2 toggle-only" id="cat3-sub1" onchange="toggleChildren(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat3-sub1">Riscos Humanos no Processo de Modernização de um Sistema Legado</label>
+</button>
+</h2>
+<div aria-labelledby="heading-cat3-sub1" class="accordion-collapse collapse" data-bs-parent="#subAccordion-cat3-sub1" id="collapse-cat3-sub1">
+<div class="accordion-body">
+<ul class="list-unstyled ms-4">
+<li><input class="form-check-input" id="cat3-sub1-item1" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat3-sub1-item1">Participação no processo de tomada de decisão</label></li>
+<li><input class="form-check-input" id="cat3-sub1-item2" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat3-sub1-item2">Perda de conhecimento técnico com aposentadoria de especialistas</label></li>
+<li><input class="form-check-input" id="cat3-sub1-item3" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat3-sub1-item3">Relações interpessoais</label></li>
+<li><input class="form-check-input" id="cat3-sub1-item4" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat3-sub1-item4">Resistência dos usuários e insatisfação com os sistemas novos</label></li>
+<li><input class="form-check-input" id="cat3-sub1-item5" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat3-sub1-item5">Sobrecarga quantitativa sobrecarga qualitativa</label></li>
+</ul></div></div></div></div>
+<div class="accordion mb-2" id="subAccordion-cat3-sub2">
+<div class="accordion-item">
+<h2 class="accordion-header" id="heading-cat3-sub2">
+<button aria-controls="collapse-cat3-sub2" aria-expanded="false" class="accordion-button collapsed" data-bs-target="#collapse-cat3-sub2" data-bs-toggle="collapse" type="button">
+<input class="form-check-input me-2 toggle-only" id="cat3-sub2" onchange="toggleChildren(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat3-sub2">Riscos Tecnológicos na Modernização de um Legado - ,  ,</label>
+</button>
+</h2>
+<div aria-labelledby="heading-cat3-sub2" class="accordion-collapse collapse" data-bs-parent="#subAccordion-cat3-sub2" id="collapse-cat3-sub2">
+<div class="accordion-body">
+<ul class="list-unstyled ms-4">
+<li><input class="form-check-input" id="cat3-sub2-item1" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat3-sub2-item1">Ambiente físico e condições de trabalho desvavoráveis</label></li>
+<li><input class="form-check-input" id="cat3-sub2-item2" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat3-sub2-item2">Complexidade Ciclomática</label></li>
+<li><input class="form-check-input" id="cat3-sub2-item3" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat3-sub2-item3">Complexidade e dificuldade de integração entre sistemas novos e legados</label></li>
+<li><input class="form-check-input" id="cat3-sub2-item4" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat3-sub2-item4">Conflito e ambiguidade de papéis no processo de modernização</label></li>
+<li><input class="form-check-input" id="cat3-sub2-item5" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat3-sub2-item5">Custos ocultos e aumento da complexidade arquitetural</label></li>
+<li><input class="form-check-input" id="cat3-sub2-item6" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat3-sub2-item6">Escopo da aplicação</label></li>
+<li><input class="form-check-input" id="cat3-sub2-item7" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat3-sub2-item7">Escopo da infraestrutura</label></li>
+<li><input class="form-check-input" id="cat3-sub2-item8" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat3-sub2-item8">Escopo do suporte</label></li>
+<li><input class="form-check-input" id="cat3-sub2-item9" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat3-sub2-item9">Fluxo de informações</label></li>
+<li><input class="form-check-input" id="cat3-sub2-item10" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat3-sub2-item10">Impossibilidade de aproveitar completamente os sistemas novos</label></li>
+<li><input class="form-check-input" id="cat3-sub2-item11" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat3-sub2-item11">Incompatibilidade tecnológica com novos sistemas</label></li>
+<li><input class="form-check-input" id="cat3-sub2-item12" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat3-sub2-item12">Profundidade da Herança Acoplamento de Classes e Linhas de Código</label></li>
+<li><input class="form-check-input" id="cat3-sub2-item13" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat3-sub2-item13">Rebuilds destrutivos</label></li>
+<li><input class="form-check-input" id="cat3-sub2-item14" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat3-sub2-item14">Reconhecimento</label></li>
+<li><input class="form-check-input" id="cat3-sub2-item15" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat3-sub2-item15">Riscos à continuidade do negócio por falhas inesperadas</label></li>
+</ul></div></div></div></div>
+</div></div>
+<div class="accordion-item">
+<h2 class="accordion-header" id="heading-cat4">
+<button aria-controls="collapse-cat4" aria-expanded="false" class="accordion-button collapsed" data-bs-target="#collapse-cat4" data-bs-toggle="collapse" type="button">
+<input class="form-check-input me-2 toggle-only" id="cat4" onchange="toggleChildren(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat4"><strong>Risco do Comprometimento da Gestão </strong></label>
+</button>
+</h2>
+<div aria-labelledby="heading-cat4" class="accordion-collapse collapse" data-bs-parent="#riskAccordion" id="collapse-cat4">
+<div class="accordion-body">
+<div class="accordion mb-2" id="subAccordion-cat4-sub1">
+<div class="accordion-item">
+<h2 class="accordion-header" id="heading-cat4-sub1">
+<button aria-controls="collapse-cat4-sub1" aria-expanded="false" class="accordion-button collapsed" data-bs-target="#collapse-cat4-sub1" data-bs-toggle="collapse" type="button">
+<input class="form-check-input me-2 toggle-only" id="cat4-sub1" onchange="toggleChildren(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat4-sub1">Risco Organizacional</label>
+</button>
+</h2>
+<div aria-labelledby="heading-cat4-sub1" class="accordion-collapse collapse" data-bs-parent="#subAccordion-cat4-sub1" id="collapse-cat4-sub1">
+<div class="accordion-body">
+<ul class="list-unstyled ms-4">
+<li><input class="form-check-input" id="cat4-sub1-item1" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat4-sub1-item1">Participação no processo de tomada de decisão</label></li>
+<li><input class="form-check-input" id="cat4-sub1-item2" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat4-sub1-item2">Perda de conhecimento das regras de negócio ao longo do tempo</label></li>
+<li><input class="form-check-input" id="cat4-sub1-item3" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat4-sub1-item3">Perda de eficiência operacional ao manter o legado</label></li>
+<li><input class="form-check-input" id="cat4-sub1-item4" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat4-sub1-item4">Perda de Governança</label></li>
+<li><input class="form-check-input" id="cat4-sub1-item5" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat4-sub1-item5">Perda de oportunidade</label></li>
+<li><input class="form-check-input" id="cat4-sub1-item6" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat4-sub1-item6">Problemas de Planejamento e Gestão de Segurança</label></li>
+</ul></div></div></div></div>
+<div class="accordion mb-2" id="subAccordion-cat4-sub2">
+<div class="accordion-item">
+<h2 class="accordion-header" id="heading-cat4-sub2">
+<button aria-controls="collapse-cat4-sub2" aria-expanded="false" class="accordion-button collapsed" data-bs-target="#collapse-cat4-sub2" data-bs-toggle="collapse" type="button">
+<input class="form-check-input me-2 toggle-only" id="cat4-sub2" onchange="toggleChildren(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat4-sub2">Risco de Estratégia de Marketing, Mercado, Concorrência;</label>
+</button>
+</h2>
+<div aria-labelledby="heading-cat4-sub2" class="accordion-collapse collapse" data-bs-parent="#subAccordion-cat4-sub2" id="collapse-cat4-sub2">
+<div class="accordion-body">
+<ul class="list-unstyled ms-4">
+<li><input class="form-check-input" id="cat4-sub2-item1" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat4-sub2-item1">Degradação da reputação social</label></li>
+</ul></div></div></div></div>
+<div class="accordion mb-2" id="subAccordion-cat4-sub3">
+<div class="accordion-item">
+<h2 class="accordion-header" id="heading-cat4-sub3">
+<button aria-controls="collapse-cat4-sub3" aria-expanded="false" class="accordion-button collapsed" data-bs-target="#collapse-cat4-sub3" data-bs-toggle="collapse" type="button">
+<input class="form-check-input me-2 toggle-only" id="cat4-sub3" onchange="toggleChildren(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat4-sub3">Risco de Recursos</label>
+</button>
+</h2>
+<div aria-labelledby="heading-cat4-sub3" class="accordion-collapse collapse" data-bs-parent="#subAccordion-cat4-sub3" id="collapse-cat4-sub3">
+<div class="accordion-body">
+<ul class="list-unstyled ms-4">
+<li><input class="form-check-input" id="cat4-sub3-item1" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat4-sub3-item1">Perda de conhecimento das regras de negócio ao longo do tempo</label></li>
+<li><input class="form-check-input" id="cat4-sub3-item2" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat4-sub3-item2">Perda de eficiência operacional ao manter o legado</label></li>
+<li><input class="form-check-input" id="cat4-sub3-item3" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat4-sub3-item3">Relações interpessoais</label></li>
+<li><input class="form-check-input" id="cat4-sub3-item4" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat4-sub3-item4">Sobrecarga quantitativa sobrecarga qualitativa</label></li>
+</ul></div></div></div></div>
+<div class="accordion mb-2" id="subAccordion-cat4-sub4">
+<div class="accordion-item">
+<h2 class="accordion-header" id="heading-cat4-sub4">
+<button aria-controls="collapse-cat4-sub4" aria-expanded="false" class="accordion-button collapsed" data-bs-target="#collapse-cat4-sub4" data-bs-toggle="collapse" type="button">
+<input class="form-check-input me-2 toggle-only" id="cat4-sub4" onchange="toggleChildren(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat4-sub4">Risco para a Continuidade dos Negócios</label>
+</button>
+</h2>
+<div aria-labelledby="heading-cat4-sub4" class="accordion-collapse collapse" data-bs-parent="#subAccordion-cat4-sub4" id="collapse-cat4-sub4">
+<div class="accordion-body">
+<ul class="list-unstyled ms-4">
+<li><input class="form-check-input" id="cat4-sub4-item1" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat4-sub4-item1">Degradação da reputação social</label></li>
+<li><input class="form-check-input" id="cat4-sub4-item2" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat4-sub4-item2">Perda de conhecimento das regras de negócio ao longo do tempo</label></li>
+<li><input class="form-check-input" id="cat4-sub4-item3" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat4-sub4-item3">Recuperação de Desastres e Continuidade de Negócios</label></li>
+</ul></div></div></div></div>
+<div class="accordion mb-2" id="subAccordion-cat4-sub5">
+<div class="accordion-item">
+<h2 class="accordion-header" id="heading-cat4-sub5">
+<button aria-controls="collapse-cat4-sub5" aria-expanded="false" class="accordion-button collapsed" data-bs-target="#collapse-cat4-sub5" data-bs-toggle="collapse" type="button">
+<input class="form-check-input me-2 toggle-only" id="cat4-sub5" onchange="toggleChildren(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat4-sub5">Riscos Financeiros e Econômicos</label>
+</button>
+</h2>
+<div aria-labelledby="heading-cat4-sub5" class="accordion-collapse collapse" data-bs-parent="#subAccordion-cat4-sub5" id="collapse-cat4-sub5">
+<div class="accordion-body">
+<ul class="list-unstyled ms-4">
+<li><input class="form-check-input" id="cat4-sub5-item1" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat4-sub5-item1">Custo de Migração</label></li>
+<li><input class="form-check-input" id="cat4-sub5-item2" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat4-sub5-item2">Custos elevados de migração para nuvem</label></li>
+<li><input class="form-check-input" id="cat4-sub5-item3" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat4-sub5-item3">Custos ocultos e aumento da complexidade arquitetural</label></li>
+<li><input class="form-check-input" id="cat4-sub5-item4" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat4-sub5-item4">Degradação da reputação social</label></li>
+<li><input class="form-check-input" id="cat4-sub5-item5" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat4-sub5-item5">Participação no processo de tomada de decisão</label></li>
+<li><input class="form-check-input" id="cat4-sub5-item6" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat4-sub5-item6">Perda de oportunidade</label></li>
+<li><input class="form-check-input" id="cat4-sub5-item7" onchange="toggleParents(this)" type="checkbox"/> <label class="form-check-label text-light" for="cat4-sub5-item7">Transparência e Prestação de Contas</label></li>
+</ul></div></div></div></div>
+</div></div>
+</div>
+</div>
+<script>
+function toggleChildren(checkbox) {
+  const container = checkbox.closest('.accordion-item');
+  const collapseBody = container.querySelector('.accordion-collapse');
+  if (!collapseBody) return;
+  const children = collapseBody.querySelectorAll('input[type="checkbox"]');
+  children.forEach(cb => { cb.checked = checkbox.checked; });
+}
+
+function toggleParents(checkbox) {
+  const li = checkbox.closest('li');
+  const subnode = li.closest('.accordion-body');
+  const subCheckbox = subnode.closest('.accordion-item').querySelector('.accordion-header input[type="checkbox"]');
+  const anyLeafChecked = subnode.querySelectorAll('input[type="checkbox"]:checked').length > 0;
+  if (subCheckbox) subCheckbox.checked = anyLeafChecked;
+
+  const catItem = subnode.closest('.accordion').closest('.accordion-body');
+  if (catItem) {
+    const catCheckbox = catItem.closest('.accordion-item').querySelector('.accordion-header input[type="checkbox"]');
+    const anySubChecked = catItem.querySelectorAll('.accordion-body input[type="checkbox"]:checked').length > 0;
+    if (catCheckbox) catCheckbox.checked = anySubChecked;
+  }
+}
+
+function printReport() {
+  const items = document.querySelectorAll('.accordion-item');
+  let report = '<h2 style="color:black">Relatório Selecionado</h2><ul>';
+  items.forEach(item => {
+    const topBox = item.querySelector('.accordion-header input[type="checkbox"]');
+    if (topBox && topBox.checked) {
+      const topLabel = item.querySelector('.accordion-header label').innerText;
+      report += `<li><strong>${topLabel}</strong><ul>`;
+      const subItems = item.querySelectorAll('.accordion-body .accordion-item');
+      subItems.forEach(sub => {
+        const subBox = sub.querySelector('.accordion-header input[type="checkbox"]');
+        if (subBox && subBox.checked) {
+          const subLabel = sub.querySelector('.accordion-header label').innerText;
+          report += `<li>${subLabel}<ul>`;
+          const checks = sub.querySelectorAll('.accordion-body input[type="checkbox"]');
+          checks.forEach(chk => {
+            if (chk.checked && chk.closest('li')) {
+              const lbl = chk.nextElementSibling.innerText;
+              report += `<li>${lbl}</li>`;
+            }
+          });
+          report += '</ul></li>';
+        }
+      });
+      report += '</ul></li>';
+    }
+  });
+  report += '</ul>';
+  const win = window.open('', '_blank');
+  win.document.write(`<html><head><title>Relatório</title></head><body>${report}</body></html>`);
+  win.document.close();
+  win.print();
+}
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</div></div></div><button class="btn btn-outline-info mb-3" onclick="printReport()">Imprimir Relatório</button></div></body></html>
